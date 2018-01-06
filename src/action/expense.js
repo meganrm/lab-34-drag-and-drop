@@ -1,6 +1,6 @@
 import uuid from 'uuid/v4';
 
-export const create = ({categoryID,name,cost}) => ({
+export const create = ({ categoryID, name, cost }) => ({
   type: 'EXPENSE_CREATE',
   payload: {
     id: uuid(),
@@ -11,14 +11,12 @@ export const create = ({categoryID,name,cost}) => ({
   },
 });
 
-export const update = (expense) => ({
+export const update = expense => ({
   type: 'EXPENSE_UPDATE',
   payload: expense,
 });
 
-export const destroy = (expense) => ({
+export const destroy = expense => ({
   type: 'EXPENSE_DESTROY',
   payload: expense,
-})
-
-
+});
