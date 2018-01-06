@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Draggable from '../draggable';
+
 import './expense-item.scss';
 
 class ExpenseItem extends React.Component {
@@ -15,10 +17,12 @@ class ExpenseItem extends React.Component {
       <div className="expense-item">
         {expenses[categoryID].map(expense =>
           (
-            <div key={expense.id}>
-              <p> {(expense.name)} </p>
-              <button onClick={() => expenseDelete(expense)}> x </button>
-            </div>
+            <Draggable item={expense}>
+              <div key={expense.id}>
+                <p> {(expense.name)} </p>
+                <button onClick={() => expenseDelete(expense)}> x </button>
+              </div>
+            </Draggable>
           ))}
       </div>
     );
