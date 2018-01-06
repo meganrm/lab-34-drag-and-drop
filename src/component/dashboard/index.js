@@ -40,8 +40,11 @@ class Dashboard extends React.Component {
               <div key={cat.id}>
                 <CategoryItem
                   category={cat}
+                  categoryID={cat.id}
                   categoryRemove={categoryRemove}
                   categoryUpdate={categoryUpdate}
+                  expenseDelete={expenseDelete}
+                  expenseCreate={expenseCreate}
                 />
                 <ExpenseForm
                   onComplete={expenseCreate}
