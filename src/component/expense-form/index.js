@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import ExpenseItem from '../expense-item';
 
 const emptyState = {
@@ -64,5 +66,12 @@ class ExpenseForm extends React.Component {
     );
   }
 }
+
+ExpenseForm.propTypes = {
+  categoryID: PropTypes.string.isRequired,
+  onComplete: PropTypes.func.isRequired,
+  expenses: PropTypes.object.isRequired,
+  expenseDelete: PropTypes.func.isRequired,
+};
 
 export default ExpenseForm;

@@ -1,5 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import CategoryForm from '../category-form';
+import { CategoryType } from '../../state/types';
+
 import './category-item.scss';
 
 class CategoryItem extends React.Component {
@@ -17,5 +21,11 @@ class CategoryItem extends React.Component {
     );
   }
 }
+
+CategoryItem.propTypes = {
+  category: PropTypes.shape(CategoryType).isRequired,
+  categoryRemove: PropTypes.func.isRequired,
+  categoryUpdate: PropTypes.func.isRequired,
+};
 
 export default CategoryItem;

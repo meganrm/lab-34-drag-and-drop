@@ -1,4 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import { CategoryType } from '../../state/types';
+
 import './_category-form.scss';
 
 const emptyState = {
@@ -63,5 +67,14 @@ class CategoryForm extends React.Component {
     );
   }
 }
+
+CategoryForm.propTypes = {
+  category: PropTypes.shape(CategoryType),
+  onComplete: PropTypes.func.isRequired,
+};
+
+CategoryForm.defaultProps = {
+  category: PropTypes.undefined,
+};
 
 export default CategoryForm;

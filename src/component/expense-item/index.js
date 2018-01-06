@@ -1,20 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './expense-item.scss';
 
 class ExpenseItem extends React.Component {
   render() {
+    const {
+      expenses,
+      categoryID,
+      expenseDelete,
+    } = this.props;
+
     return (
       <div className="expense-item">
-        {this.props.expenses[this.props.categoryID].map(expense =>
+        {expenses[categoryID].map(expense =>
           (
             <div key={expense.id}>
               <p> {(expense.name)} </p>
-              <button onClick={() => this.props.expenseDelete(expense)}> x </button>
+              <button onClick={() => expenseDelete(expense)}> x </button>
             </div>
           ))}
       </div>
     );
   }
 }
+
+ExpenseItem.propTypes = {
+  categoryID: PropTypes.string.isRequired,
+  expenses: PropTypes.object.isRequired,
+  expenseDelete: PropTypes.func.isRequired,
+};
 
 export default ExpenseItem;
