@@ -36,6 +36,7 @@ class CategoryItem extends React.Component {
           </button>
           <CategoryForm category={this.props.category} onComplete={this.props.categoryUpdate} />
         </div>
+        {this.props.children}
       </DropZone>
     );
   }
@@ -43,8 +44,11 @@ class CategoryItem extends React.Component {
 
 CategoryItem.propTypes = {
   category: PropTypes.shape(CategoryType).isRequired,
+  categoryID: PropTypes.string.isRequired,
   categoryRemove: PropTypes.func.isRequired,
   categoryUpdate: PropTypes.func.isRequired,
+  expenseCreate: PropTypes.func.isRequired,
+  expenseDelete: PropTypes.func.isRequired,
 };
 
 export default CategoryItem;

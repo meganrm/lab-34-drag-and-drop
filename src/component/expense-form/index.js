@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import DropZone from '../drop-zone';
-import ExpenseItem from '../expense-item';
+import ExpenseItems from '../expense-item';
 
 const emptyState = {
   name: '',
@@ -35,6 +35,10 @@ class ExpenseForm extends React.Component {
   }
 
   render() {
+    const {
+      expenseDelete,
+      expenseUpdate,
+    } = this.props;
     return (
       <div className="category-form">
         <form
@@ -56,12 +60,14 @@ class ExpenseForm extends React.Component {
           />
           <button type="submit"> create expense </button>
         </form>
-
-        <ExpenseItem
-          expenseDelete={this.props.expenseDelete}
-          expenses={this.props.expenses}
-          categoryID={this.state.categoryID}
-        />
+        {this.props.expenses[this.state.categoryID].map(expense =>
+          (<ExpenseItems
+            key={expense.id}
+            expenseDelete={expenseDelete}
+            expenseUpdate={expenseUpdate}
+            expense={expense}
+            categoryID={this.state.categoryID}
+          />))}
 
       </div>
     );
@@ -72,6 +78,7 @@ ExpenseForm.propTypes = {
   categoryID: PropTypes.string.isRequired,
   onComplete: PropTypes.func.isRequired,
   expenses: PropTypes.object.isRequired,
+  expenseUpdate: PropTypes.func.isRequired,
   expenseDelete: PropTypes.func.isRequired,
 };
 

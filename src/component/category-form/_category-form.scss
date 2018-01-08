@@ -2,32 +2,30 @@
 
 .category-form {
     background-color: $color-light-gray;
-    border: 2px solid $color-green;
     display: flex;
     flex-direction: column;
     margin: .2em auto;
     padding: .5em;
     text-align: center;
     width: 300px;
-        
+
     input {
-        border: 1px solid $color-green;
+        border: 1px solid $color-blue;
         display: inline-flex;
         margin: .3em;
     }
 
     .type-input {
-        width: 40%
+        width: 50%
     }
 
     .amount-input {
         text-align: center;
-        width: 3em;
+        width: 5em;
     }
-    
+
     button {
-        background-color: $color-green;
-        border-radius: 10px;
+        background-color: $color-blue;
         color: $color-light-gray;
         margin: auto;
         padding: .5em;
@@ -35,4 +33,3 @@
     }
 
 }
-

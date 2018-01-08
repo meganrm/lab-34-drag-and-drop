@@ -27,6 +27,7 @@ class Dashboard extends React.Component {
       categoryRemove,
       categoryUpdate,
       expenseCreate,
+      expenseUpdate,
       expenses,
       expenseDelete,
     } = this.props;
@@ -45,13 +46,15 @@ class Dashboard extends React.Component {
                   categoryUpdate={categoryUpdate}
                   expenseDelete={expenseDelete}
                   expenseCreate={expenseCreate}
-                />
-                <ExpenseForm
-                  onComplete={expenseCreate}
-                  categoryID={cat.id}
-                  expenses={expenses}
-                  expenseDelete={expenseDelete}
-                />
+                >
+                  <ExpenseForm
+                    onComplete={expenseCreate}
+                    categoryID={cat.id}
+                    expenses={expenses}
+                    expenseUpdate={expenseUpdate}
+                    expenseDelete={expenseDelete}
+                  />
+                </CategoryItem>
               </div>
           ))}
         </div>
@@ -67,6 +70,7 @@ Dashboard.propTypes = {
   categoryUpdate: PropTypes.func.isRequired,
   categoryRemove: PropTypes.func.isRequired,
   expenseCreate: PropTypes.func.isRequired,
+  expenseUpdate: PropTypes.func.isRequired,
   expenseDelete: PropTypes.func.isRequired,
 };
 
@@ -80,6 +84,7 @@ const mapDispatchToProps = dispatch => ({
   categoryUpdate: data => dispatch(category.update(data)),
   categoryRemove: data => dispatch(category.destroy(data)),
   expenseCreate: data => dispatch(expense.create(data)),
+  expenseUpdate: data => dispatch(expense.update(data)),
   expenseDelete: data => dispatch(expense.destroy(data)),
 });
 
