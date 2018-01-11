@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import ExpenseType from '../../state/types';
 
 class Draggable extends React.Component {
   constructor(props) {
@@ -18,7 +21,7 @@ class Draggable extends React.Component {
     });
   }
 
-  handleDragEnd(e) {
+  handleDragEnd() {
     this.setState({
       dragging: false,
     });
@@ -36,5 +39,10 @@ class Draggable extends React.Component {
     );
   }
 }
+
+Draggable.propTypes = {
+  item: PropTypes.shape(ExpenseType).isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+};
 
 export default Draggable;

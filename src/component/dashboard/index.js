@@ -26,11 +26,13 @@ class Dashboard extends React.Component {
       categoryCreate,
       categoryRemove,
       categoryUpdate,
+      categoryUpdateBudget,
       expenseCreate,
       expenseUpdate,
       expenses,
       expenseDelete,
     } = this.props;
+
     return (
       <div className="dashboard">
         <h1> budget manager </h1>
@@ -50,6 +52,7 @@ class Dashboard extends React.Component {
                   <ExpenseForm
                     onComplete={expenseCreate}
                     categoryID={cat.id}
+                    categoryTotal={cat.budget}
                     expenses={expenses}
                     expenseUpdate={expenseUpdate}
                     expenseDelete={expenseDelete}

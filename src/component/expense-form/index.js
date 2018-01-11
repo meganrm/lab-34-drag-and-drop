@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import DropZone from '../drop-zone';
 import ExpenseItems from '../expense-item';
 
 const emptyState = {
@@ -29,8 +28,11 @@ class ExpenseForm extends React.Component {
   }
 
   handleSubmit(e) {
+    const {
+      onComplete,
+    } = this.props;
     e.preventDefault();
-    this.props.onComplete(this.state);
+    onComplete(this.state);
     this.setState(emptyState);
   }
 
@@ -38,7 +40,9 @@ class ExpenseForm extends React.Component {
     const {
       expenseDelete,
       expenseUpdate,
+      categoryTotal,
     } = this.props;
+    let total = categoryTotal;
     return (
       <div className="category-form">
         <form
@@ -60,15 +64,19 @@ class ExpenseForm extends React.Component {
           />
           <button type="submit"> create expense </button>
         </form>
-        {this.props.expenses[this.state.categoryID].map(expense =>
-          (<ExpenseItems
+
+        {this.props.expenses[this.state.categoryID].map((expense) => {
+          total -= expense.cost;
+          return (<ExpenseItems
             key={expense.id}
             expenseDelete={expenseDelete}
             expenseUpdate={expenseUpdate}
             expense={expense}
             categoryID={this.state.categoryID}
-          />))}
-
+          />);
+})
+        }
+        <div className="total">Remaining total: {total}</div>
       </div>
     );
   }
@@ -80,6 +88,7 @@ ExpenseForm.propTypes = {
   expenses: PropTypes.object.isRequired,
   expenseUpdate: PropTypes.func.isRequired,
   expenseDelete: PropTypes.func.isRequired,
+  categoryTotal: PropTypes.number.isRequired,
 };
 
 export default ExpenseForm;

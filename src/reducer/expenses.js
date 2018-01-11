@@ -6,6 +6,7 @@ export default (state = emptyState, { type, payload }) => {
       return { ...state, [payload.id]: [] };
 
     case 'EXPENSE_CREATE':
+
       let categoryID = payload.categoryID;
       let category = state[categoryID];
       const result = [...category, payload];

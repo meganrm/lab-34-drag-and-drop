@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Draggable from '../draggable';
+import ExpenseType from '../../state/types';
 
-import './expense-item.scss';
+// import './expense-item.scss';
 
 class ExpenseItems extends React.Component {
   constructor(props) {
@@ -14,10 +15,8 @@ class ExpenseItems extends React.Component {
       expense,
     } = this.props;
     this.state = {
-      id: expense.id,
       name: expense.name,
       cost: expense.cost,
-      categoryID: expense.categoryID,
     };
   }
 
@@ -28,14 +27,20 @@ class ExpenseItems extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
-    this.props.expenseUpdate(this.state);
+    const {
+      expense,
+    } = this.props;
+    const updatedExpense = {
+      ...this.state,
+      id: expense.id,
+      categoryID: expense.categoryID,
+    };
+    this.props.expenseUpdate(updatedExpense);
   }
 
   render() {
     const {
       expense,
-      categoryID,
       expenseDelete,
     } = this.props;
 
@@ -70,8 +75,8 @@ class ExpenseItems extends React.Component {
 }
 
 ExpenseItems.propTypes = {
-  categoryID: PropTypes.string.isRequired,
-  expenses: PropTypes.object.isRequired,
+  expense: PropTypes.shape(ExpenseType).isRequired,
+  expenseUpdate: PropTypes.func.isRequired,
   expenseDelete: PropTypes.func.isRequired,
 };
 

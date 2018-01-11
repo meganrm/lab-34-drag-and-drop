@@ -20,8 +20,11 @@ class CategoryItem extends React.Component {
       expenseDelete,
     } = this.props;
     expenseDelete(expense);
-    expense.categoryID = categoryID;
-    expenseCreate(expense);
+    const updatedExpense = {
+      ...expense,
+      categoryID,
+    };
+    expenseCreate(updatedExpense);
   }
 
   render() {
