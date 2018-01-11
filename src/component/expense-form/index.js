@@ -88,7 +88,11 @@ ExpenseForm.propTypes = {
   expenses: PropTypes.object.isRequired,
   expenseUpdate: PropTypes.func.isRequired,
   expenseDelete: PropTypes.func.isRequired,
-  categoryTotal: PropTypes.number.isRequired,
+  categoryTotal: PropTypes.number,
+};
+
+ExpenseForm.default = {
+  categoryTotal: 0,
 };
 
 export default ExpenseForm;

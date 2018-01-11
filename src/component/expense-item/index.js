@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Draggable from '../draggable';
 import ExpenseType from '../../state/types';
 
-// import './expense-item.scss';
+import './expense-item.scss';
 
 class ExpenseItems extends React.Component {
   constructor(props) {

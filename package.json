@@ -16,8 +16,13 @@
     "react-test-renderer": "^16.2.0",
     "sinon": "^4.1.4"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss|less)$": "<rootDir>/empty-module.js"
+    }
+  },
   "scripts": {
-    "test": "jest",
+    "test": "jest --no-cache",
     "watch": "webpack-dev-server --inline --hot",
     "watch-work": "webpack-dev-server --inline --hot --public $C9_HOSTNAME --host $IP --port $PORT",
     "build": "webpack"
